@@ -111,7 +111,7 @@ const BeautyWebView = ({
           />
         }
         <WebView
-          source={{ uri: currentUrl }}
+          source={currentUrl}
           onLoadProgress={({ nativeEvent }) => {
             let loadingProgress = nativeEvent.progress;
             onProgress(loadingProgress);
