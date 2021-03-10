@@ -82,27 +82,44 @@ const BeautyWebView = ({
   } 
 
 
-  const html = `
+  // const html = `
+  //   <html>
+  //     <head>
+  //         <script src="./node_modules/@wiris/mathtype-generic/wirisplugin-generic.js"></script>
+  //     </head>
+  //     <body>
+  //         <div id="toolbar"></div>
+  //         <div id="htmlEditor" contenteditable="true">Try me!</div>
+  //       <script>
+  //         var genericIntegrationProperties = {};
+  //         genericIntegrationProperties.target = document.getElementById('htmlEditor');
+  //         genericIntegrationProperties.toolbar = document.getElementById('toolbar');
+    
+  //         // GenericIntegration instance.
+  //         var genericIntegrationInstance = new WirisPlugin.GenericIntegration(genericIntegrationProperties);
+  //         genericIntegrationInstance.init();
+  //         genericIntegrationInstance.listeners.fire('onTargetReady', {});
+  //       </script>
+  //     </body>
+  //   </html>
+  //   `
+
+    const html = `
     <html>
       <head>
-          <script src="./node_modules/@wiris/mathtype-generic/wirisplugin-generic.js"></script>
+        <script src="https://www.wiris.net/demo/editor/editor"></script>
+        <script>
+        var editor;
+        window.onload = function () {
+          editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
+                editor.insertInto(document.getElementById('editorContainer'));
+        }
+        </script>
       </head>
       <body>
-          <div id="toolbar"></div>
-          <div id="htmlEditor" contenteditable="true">Try me!</div>
-        <script>
-          var genericIntegrationProperties = {};
-          genericIntegrationProperties.target = document.getElementById('htmlEditor');
-          genericIntegrationProperties.toolbar = document.getElementById('toolbar');
-    
-          // GenericIntegration instance.
-          var genericIntegrationInstance = new WirisPlugin.GenericIntegration(genericIntegrationProperties);
-          genericIntegrationInstance.init();
-          genericIntegrationInstance.listeners.fire('onTargetReady', {});
-        </script>
+        <div id="editorContainer"></div>
       </body>
-    </html>
-    `
+    </html>`
 
   return (
     <Modal visible={visible} transparent={false} animationType={animationType}>
