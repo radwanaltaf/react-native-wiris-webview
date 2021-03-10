@@ -81,6 +81,18 @@ const BeautyWebView = ({
     }, 200);
   } 
 
+
+  const html = `
+    <html>
+        <head>
+            <script src="../../../../node_modules/@wiris/mathtype-generic/wirisplugin-generic.js"></script>
+        </head>
+        <body>
+          <h1>HELLOOO</h1>
+        </body>
+    </html>
+    `
+
   return (
     <Modal visible={visible} transparent={false} animationType={animationType}>
       <SafeAreaView style={[styles.container, { backgroundColor: backgroundColor }]}>
@@ -111,7 +123,8 @@ const BeautyWebView = ({
           />
         }
         <WebView
-          source={currentUrl}
+          originWhitelist={['*']}
+          source={{html: html}}
           onLoadProgress={({ nativeEvent }) => {
             let loadingProgress = nativeEvent.progress;
             onProgress(loadingProgress);
