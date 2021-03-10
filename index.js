@@ -142,9 +142,11 @@ const BeautyWebView = ({
           }}
           // injectedJavaScript="window.ReactNativeWebView.postMessage(document.title)"
           injectedJavaScript={injectedJS}
+          javaScriptEnabled={true}
           onMessage={event => setTitle(event.nativeEvent.data)}
           onLoadEnd={onLoadEnd}
           onLoadStart={onLoadStart}
+          allowFileAccess={true}
           onNavigationStateChange={onNavigationStateChange}
         />
       </SafeAreaView>
