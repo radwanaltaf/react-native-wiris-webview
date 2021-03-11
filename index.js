@@ -85,7 +85,7 @@ const BeautyWebView = ({
   const injectedWirisJS = `
     if (!window.location.search) {
       var link = document.getElementById('progress-bar');
-      link.href = './site/index.html?${params}';
+      link.href = './wiris/index.html?${params}';
       link.click();
     }
   `;
