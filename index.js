@@ -134,6 +134,7 @@ const BeautyWebView = ({
           onLoadStart={onLoadStart}
           allowFileAccess={true}
           onNavigationStateChange={onNavigationStateChange}
+          domStorageEnabled={true}
         />
       </SafeAreaView>
     </Modal>
