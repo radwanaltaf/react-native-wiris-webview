@@ -81,15 +81,6 @@ const BeautyWebView = ({
     }, 200);
   } 
 
-  const params = '';
-  const injectedWirisJS = `
-    if (!window.location.search) {
-      var link = document.getElementById('progress-bar');
-      link.href = './wiris/index.html?${params}';
-      link.click();
-    }
-  `;
-
   return (
     <Modal visible={visible} transparent={false} animationType={animationType}>
       <SafeAreaView style={[styles.container, { backgroundColor: backgroundColor }]}>
@@ -127,7 +118,7 @@ const BeautyWebView = ({
             onProgress(loadingProgress);
           }}
           // injectedJavaScript="window.ReactNativeWebView.postMessage(document.title)"
-          injectedJavaScript={injectedWirisJS}
+          injectedJavaScript={injectedJS}
           javaScriptEnabled={true}
           onMessage={event => setTitle(event.nativeEvent.data)}
           onLoadEnd={onLoadEnd}
