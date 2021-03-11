@@ -81,55 +81,14 @@ const BeautyWebView = ({
     }, 200);
   } 
 
-
-  // const html = `
-  //   <html>
-  //     <head>
-  //         <script src="./node_modules/@wiris/mathtype-generic/wirisplugin-generic.js"></script>
-  //     </head>
-  //     <body>
-  //         <div id="toolbar"></div>
-  //         <div id="htmlEditor" contenteditable="true">Try me!</div>
-  //       <script>
-  //         var genericIntegrationProperties = {};
-  //         genericIntegrationProperties.target = document.getElementById('htmlEditor');
-  //         genericIntegrationProperties.toolbar = document.getElementById('toolbar');
-    
-  //         // GenericIntegration instance.
-  //         var genericIntegrationInstance = new WirisPlugin.GenericIntegration(genericIntegrationProperties);
-  //         genericIntegrationInstance.init();
-  //         genericIntegrationInstance.listeners.fire('onTargetReady', {});
-  //       </script>
-  //     </body>
-  //   </html>
-  //   `
-
-  const html = `
-  <html lang="en">
-  <head>
-    <script src="https://www.wiris.net/demo/editor/editor"></script>
-    <script>
-      var editor;
-      window.onload = function () {
-        editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-        editor.insertInto(document.getElementById('editorContainer'));
-        setTimeout(() => {
-          editor.setMathML("<math><mfrac><mn>1</mn><mi>x</mi></mfrac></math>");
-          alert(editor.getMathML())
-        }, 500);
-      }
-
-
-    </script>
-
-  </head>
-
-
-  <body>
-    <div id="editorContainer"></div>  
-  </body>
-
-</html>`
+  const params = '';
+  const injectedWirisJS = `
+    if (!window.location.search) {
+      var link = document.getElementById('progress-bar');
+      link.href = './site/index.html?${params}';
+      link.click();
+    }
+  `;
 
   return (
     <Modal visible={visible} transparent={false} animationType={animationType}>
@@ -162,13 +121,13 @@ const BeautyWebView = ({
         }
         <WebView
           originWhitelist={['*']}
-          source={{html: html}}
+          source={{ uri: currentUrl }}
           onLoadProgress={({ nativeEvent }) => {
             let loadingProgress = nativeEvent.progress;
             onProgress(loadingProgress);
           }}
           // injectedJavaScript="window.ReactNativeWebView.postMessage(document.title)"
-          injectedJavaScript={injectedJS}
+          injectedJavaScript={injectedWirisJS}
           javaScriptEnabled={true}
           onMessage={event => setTitle(event.nativeEvent.data)}
           onLoadEnd={onLoadEnd}
