@@ -104,22 +104,32 @@ const BeautyWebView = ({
   //   </html>
   //   `
 
-    const html = `
-    <html>
-      <head>
-        <script src="https://www.wiris.net/demo/editor/editor"></script>
-        <script>
-        var editor;
-        window.onload = function () {
-          editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
-                editor.insertInto(document.getElementById('editorContainer'));
-        }
-        </script>
-      </head>
-      <body>
-        <div id="editorContainer"></div>
-      </body>
-    </html>`
+  const html = `
+  <html lang="en">
+  <head>
+    <script src="https://www.wiris.net/demo/editor/editor"></script>
+    <script>
+      var editor;
+      window.onload = function () {
+        editor = com.wiris.jsEditor.JsEditor.newInstance({'language': 'en'});
+        editor.insertInto(document.getElementById('editorContainer'));
+        setTimeout(() => {
+          editor.setMathML("<math><mfrac><mn>1</mn><mi>x</mi></mfrac></math>");
+          alert(editor.getMathML())
+        }, 500);
+      }
+
+
+    </script>
+
+  </head>
+
+
+  <body>
+    <div id="editorContainer"></div>  
+  </body>
+
+</html>`
 
   return (
     <Modal visible={visible} transparent={false} animationType={animationType}>
