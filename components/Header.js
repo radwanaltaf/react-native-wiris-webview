@@ -70,7 +70,7 @@ export const Header = ({
       {navigationVisible &&
         <Icon onPress={onPressForward} content={forward} />
       }
-      <View>
+      {/* <View>
         <CutomMenu
           extraMenuItems={extraMenuItems}
           contentType={contentType}
@@ -79,7 +79,7 @@ export const Header = ({
           url={url}
           menuIcon={menuIcon}
         />
-      </View>
+      </View> */}
     </View>
   );
 };
