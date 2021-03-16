@@ -88,7 +88,7 @@ const BeautyWebView = ({
           backgroundColor={headerBackground}
           contentType={headerContent}
           title={title}
-          url={currentUrl}
+          url={''}
           onPressClose={onClose}
           copyLinkTitle={copyLinkTitle}
           openBrowserTitle={openBrowserTitle}
@@ -146,12 +146,12 @@ BeautyWebView.defaultProps = {
   headerBackground: colors.defaultBackground,
   progressColor: colors.progress,
   progressHeight: 4,
-  loadingText: 'Loading...',
+  loadingText: 'Math Writer/Chemistry Writer',
   copyLinkTitle: 'Copy Link',
   openBrowserTitle: 'Open on Browser',
   animationType: "slide",
   progressBarType: "normal",
-  navigationVisible: true
+  navigationVisible: false
 }
 
 export default BeautyWebView;
